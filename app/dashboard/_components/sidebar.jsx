@@ -9,6 +9,10 @@ const links = [
     title: "Dashboard",
   },
   {
+    href: "/history",
+    title: "History",
+  },
+  {
     href: "/privacy-policy",
     title: "Privacy Policy",
   },
