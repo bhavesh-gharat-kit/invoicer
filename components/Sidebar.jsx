@@ -9,11 +9,11 @@ const links = [
     title: "Dashboard",
   },
   {
-    href: "/history",
+    href: "/dashboard/history",
     title: "History",
   },
   {
-    href: "/privacy-policy",
+    href: "/dashboard/privacy-policy",
     title: "Privacy Policy",
   },
 ];
@@ -22,7 +22,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden lg:block w-52 bg-slate-900 text-white h-screen fixed left-0 top-0">
+    <aside className="hidden lg:block w-52 flex-shrink-0 bg-slate-900 text-white h-screen">
       <div className="flex flex-col justify-between h-full px-4 py-8">
         <div>
           <h2 className="font-bold text-lg text-white">Welcome</h2>
@@ -51,7 +51,7 @@ export default function Sidebar() {
             rel="noreferrer"
             className="text-white underline"
           >
-            Saurabh Bhoir
+            Invoicer
           </a>{" "}
           {new Date().getFullYear()}
         </small>

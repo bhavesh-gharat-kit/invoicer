@@ -1,7 +1,10 @@
+"use client"
 import React from "react";
 import { format } from "date-fns";
 
 export default function InvoiceView({ values, formik }) {
+ 
+  
   return (
     <>
       <section className="sticky top-4 bg-white p-4 rounded border space-y-8">

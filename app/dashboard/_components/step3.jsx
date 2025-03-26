@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { Button } from "../../../components/ui/button";
 import List from "./list";
 import { ToastContainer } from "react-toastify";
+import { FaCheckDouble, FaFile, FaFileAlt, FaPlus } from "react-icons/fa";
 
-export default function Step3({ values, formik }) {
+export default function Step3({ values, formik, okandReset }) {
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -74,9 +74,13 @@ export default function Step3({ values, formik }) {
               </p>
             </article>
 
-            <Button variant="default" onClick={values.handleAddItem}>
+            <button
+              className="flex gap-2 items-center justify-center px-4 py-2 rounded-md bg-slate-800 hover:bg-slate-900 transition-all text-white"
+              onClick={values.handleAddItem}
+            >
+              <FaPlus />
               Add item
-            </Button>
+            </button>
           </div>
 
           <List items={values} />
@@ -89,7 +93,7 @@ export default function Step3({ values, formik }) {
               name="notes"
               id="notes"
               cols="30"
-              rows="20"
+              rows="10"
               className="textarea"
               value={formik.values.notes}
               onChange={formik.handleChange}
@@ -105,14 +109,23 @@ export default function Step3({ values, formik }) {
         </form>
 
         <ul className="flex flex-wrap items-center justify-between gap-4">
-          <li>
-            <Button
+          <li className="flex justify-between gap-2">
+            <button
               onClick={() => values.setPreviewInvoice(true)}
               variant="default"
+              className="flex gap-2 items-center justify-center px-4 py-1 rounded-md bg-slate-800 hover:bg-slate-900 transition-all text-white"
             >
+              <FaFileAlt />
               Preview Invoice
-            </Button>
-          </li> 
+            </button>
+            <button
+              className="flex gap-2 items-center justify-center px-4 py-2 rounded-md bg-slate-800 hover:bg-slate-900 transition-all text-white"
+              onClick={() => okandReset(["hello"])}
+            >
+              <FaCheckDouble />
+              Done
+            </button>
+          </li>
         </ul>
       </section>
     </>

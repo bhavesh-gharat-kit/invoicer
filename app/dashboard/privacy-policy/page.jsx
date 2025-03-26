@@ -1,11 +1,8 @@
 import React from "react";
-import Header from "../(landing)/_components/header";
 
 export default function PrivacyPolicy() {
   return (
     <>
-      <Header />
-
       <section className="py-16 px-6 lg:px-8 max-w-5xl mx-auto text-gray-800">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-extrabold text-gray-900">Privacy Policy</h1>
@@ -50,7 +47,7 @@ export default function PrivacyPolicy() {
               If you have any questions or concerns regarding this privacy policy or our data practices, please feel free to contact us.
             </p>
             <p className="text-gray-600">
-              Saurabh Bhoir Solutions, Asangaon, MH 421601.
+              Bhavesh Gharat, Asangaon, MH 421601.
             </p>
           </div>
         </div>

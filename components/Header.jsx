@@ -1,4 +1,3 @@
-import { Button } from "../../../components/ui/button";
 import Link from "next/link";
 import React from "react";
 import { auth } from "@clerk/nextjs";
@@ -9,27 +8,27 @@ export default function Header() {
   return (
     <>
       <header className="flex items-center justify-between py-2 px-4">
-        <Button variant="outline">Invoicer</Button>
+        <button variant="outline">Invoicer</button>
 
         {!userId ? (
           <ul className="flex items-center justify-center gap-4">
             <li>
-              <Button asChild variant="secondary">
+              <button className="bg-slate-700 text-white hover:bg-slate-900 transition-all rounded-lg py-2 p-4">
                 <Link href="/sign-up">Sign Up</Link>
-              </Button>
+              </button>
             </li>
             <li>
-              <Button asChild variant="default">
+              <button className="bg-blue-700 text-white hover:bg-blue-900 transition-all rounded-lg py-2 p-4">
                 <Link href="/sign-in">Sign In</Link>
-              </Button>
+              </button>
             </li>
           </ul>
         ) : (
           <ul className="flex items-center justify-center">
             <li>
-              <Button asChild variant="default">
+              <button className="bg-blue-700 text-white hover:bg-blue-900 transition-all rounded-lg py-2 p-4">
                 <Link href="/dashboard">Go to Dashboard</Link>
-              </Button>
+              </button>
             </li>
           </ul>
         )}

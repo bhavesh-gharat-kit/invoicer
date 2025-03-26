@@ -1,12 +1,11 @@
 import React from "react";
 import { format } from "date-fns";
-import { Button } from "../../../components/ui/button";
 import { XIcon } from "lucide-react";
 
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 
-export default function PreviewInvoice({ values, formik }) {
+export default function PreviewInvoice({ values, formik, setPreviewInvoice }) {
   // Create PDF
   function createPDF() {
     const invoice = document.getElementById("pdf");
@@ -28,17 +27,17 @@ export default function PreviewInvoice({ values, formik }) {
         <div className="max-w-3xl mx-auto pt-10">
           <h2 className="text-white font-bold text-2xl flex items-center justify-between">
             <span>
-              <Button variant="secondary" onClick={createPDF}>
+              <button variant="secondary" onClick={createPDF}>
                 Download Invoice
-              </Button>
+              </button>
             </span>
             <span>
-              <Button
+              <button
                 variant="custom"
-                onClick={() => values.setPreviewInvoice(false)}
+                onClick={() => setPreviewInvoice(false)}
               >
                 <XIcon />
-              </Button>
+              </button>
             </span>
           </h2>
         </div>

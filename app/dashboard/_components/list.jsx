@@ -1,5 +1,4 @@
-import { DeleteIcon, Edit } from "lucide-react";
-import { Button } from "../../../components/ui/button";
+import { DeleteIcon, Edit } from "lucide-react"; 
 import React from "react";
 
 export default function List({ items }) {
@@ -14,20 +13,20 @@ export default function List({ items }) {
 
           <ul className="flex items-center justify-center gap-2">
             <li>
-              <Button
+              <button
                 onClick={() => items.handleDelete(item.id)}
                 variant="destructive"
               >
                 <DeleteIcon />
-              </Button>
+              </button>
             </li>
             <li>
-              <Button
+              <button
                 onClick={() => items.handleEdit(item.id)}
                 variant="outline"
               >
                 <Edit />
-              </Button>
+              </button>
             </li>
           </ul>
         </div>
