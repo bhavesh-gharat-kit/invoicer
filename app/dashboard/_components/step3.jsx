@@ -3,7 +3,7 @@
 import React from "react";
 import List from "./list";
 import { ToastContainer } from "react-toastify";
-import { FaCheckDouble, FaFile, FaFileAlt, FaPlus } from "react-icons/fa";
+import { FaCheckDouble, FaFileAlt, FaPlus, FaTimes } from "react-icons/fa";
 
 export default function Step3({ values, formik, okandReset }) {
   function handleSubmit(e) {
@@ -38,7 +38,7 @@ export default function Step3({ values, formik, okandReset }) {
                 Quantity
               </label>
               <input
-                type="text"
+                type="number"
                 name="quantity"
                 id="quantity"
                 placeholder="Quantity of the items"
@@ -55,7 +55,7 @@ export default function Step3({ values, formik, okandReset }) {
                 Price
               </label>
               <input
-                type="text"
+                type="number"
                 name="price"
                 id="price"
                 placeholder="Price of the item"
@@ -70,7 +70,7 @@ export default function Step3({ values, formik, okandReset }) {
                 Total
               </label>
               <p className="border bg-slate-200 py-2 rounded px-2">
-                {values.total.toLocaleString()}
+                {values.price * values.quantity}
               </p>
             </article>
 
@@ -83,7 +83,7 @@ export default function Step3({ values, formik, okandReset }) {
             </button>
           </div>
 
-          <List items={values} />
+          <List items={values.items} />
 
           <article className="md:flex-1">
             <label htmlFor="notes" className="label">
@@ -111,19 +111,19 @@ export default function Step3({ values, formik, okandReset }) {
         <ul className="flex flex-wrap items-center justify-between gap-4">
           <li className="flex justify-between gap-2">
             <button
-              onClick={() => values.setPreviewInvoice(true)}
-              variant="default"
-              className="flex gap-2 items-center justify-center px-4 py-1 rounded-md bg-slate-800 hover:bg-slate-900 transition-all text-white"
+              className="flex gap-2 items-center justify-center px-4 py-2 rounded-md bg-red-500 hover:bg-red-700 transition-all text-white"
+              onClick={okandReset}
             >
-              <FaFileAlt />
-              Preview Invoice
+              <FaTimes />
+              Reset
             </button>
             <button
-              className="flex gap-2 items-center justify-center px-4 py-2 rounded-md bg-slate-800 hover:bg-slate-900 transition-all text-white"
-              onClick={() => okandReset(["hello"])}
+              onClick={() => values.setPreviewInvoice(true)}
+              variant="default"
+              className="flex gap-2 items-center justify-center px-4 py-1 rounded-md bg-green-500 hover:bg-green-700 transition-all text-white"
             >
-              <FaCheckDouble />
-              Done
+              <FaFileAlt />
+              Dwnload
             </button>
           </li>
         </ul>

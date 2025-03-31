@@ -11,7 +11,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 
-const EditOwnerDetail = ({ onSubmit, onClose }) => {
+const EditOwnerDetail = ({ onSubmit, onClose, formik }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,6 +29,10 @@ const EditOwnerDetail = ({ onSubmit, onClose }) => {
     setOwnerData(formData);
     setTimeout(() => {
       onSubmit();
+      formik.setValues({
+        ...formik.values,
+        ...formData,
+      });
     }, 100);
   };
 

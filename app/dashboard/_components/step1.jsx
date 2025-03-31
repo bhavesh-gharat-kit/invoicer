@@ -13,6 +13,10 @@ export default function Step1({ values, formik }) {
   const { ownerData, getOwnerData } = useInvoiceStore();
 
   useEffect(() => {
+    if (!ownerData) setShowEditForm(true);
+  }, [ownerData]);
+
+  useEffect(() => {
     setIsMounted(true);
   }, []);
 
@@ -125,6 +129,7 @@ export default function Step1({ values, formik }) {
       </section>
       {showEditForm && (
         <EditOwnerDetail
+          formik={formik}
           onClose={() => setShowEditForm(false)}
           onSubmit={() => {
             getOwnerData();

@@ -33,26 +33,11 @@ const Dashboard = () => {
     clientName: "",
     clientEmail: "",
     clientAddress: "",
+    notes: "",
     invoiceNumber: 1,
     invoiceDate: new Date().toISOString().split("T")[0],
     dueDate: new Date().toISOString().split("T")[0],
-    notes: "",
   });
-  // const [formData, setFormData] = useState({
-  //   name: ownerData?.name||"",
-  //   email: ownerData?.email||"",
-  //   address: ownerData?.address||"",
-  //   phoneNumber: ownerData?.contactNumber||"",
-  //   bankName: ownerData?.bankName||"",
-  //   accountNumber: ownerData?.accountNumber||"",
-  //   clientName: "",
-  //   clientEmail: "",
-  //   clientAddress: "",
-  //   invoiceNumber: history?.length?history.length+2:1,
-  //   invoiceDate: new Date(),
-  //   dueDate: "",
-  //   notes: "",
-  // });
 
   // ✅ Invoice Items State
   const [items, setItems] = useState([]);
@@ -77,7 +62,7 @@ const Dashboard = () => {
     setFormData((prev) => ({
       ...prev,
       ...ownerData,
-      invoiceNumber: history?.length ? history.length + 2 : 1,
+      invoiceNumber: history?.length ? history.length + 1 : 1,
     }));
   }, [ownerData, history]);
 
@@ -135,17 +120,36 @@ const Dashboard = () => {
                   formik={formik}
                 />
                 <Step3
-                  okandReset={(data) => {
+                  okandReset={() => {
+                    if (items.length < 1)
+                      return toast.error("Please add at least one item!");
+
+                    let data = {
+                      no: formik.values?.invoiceNumber,
+                      date: formik.values?.invoiceDate,
+                      dueDate: formik.values?.dueDate,
+                      name: formik.values?.clientName,
+                      email: formik.values?.clientEmail,
+                      addr: formik.values?.clientAddress,
+                      note: formik.values?.notes,
+                      items,
+                    };
+
                     addToHistory(data);
+
                     getHistory();
-                    setFormData({
-                      ...formData,
+
+                    formik.setValues({
+                      ...formik.values,
                       clientName: "",
                       clientEmail: "",
                       clientAddress: "",
                       notes: "",
                     });
+
+                    setItems([]);
                   }}
+                  
                   values={{
                     item,
                     setItem,
